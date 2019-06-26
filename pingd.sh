@@ -6,7 +6,7 @@ if ping -c 1 -W 1 192.168.2.1 &>/dev/null
 then
     echo 'Ok 123'
 else
-    echo 'fail 456'
+    echo 'fail 45678'
 fi
 
 #############
