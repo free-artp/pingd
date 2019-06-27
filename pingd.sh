@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Environment variables:
+#   PINGD_INT - internal ( through tunnel) host
+#   PINGD_EXT - external (internet) host
+#   PINGD_TIMEOUT - ping's timeout (-W option's value')
+#   PINGD_ITERATIONS - max loops in the 'check' state
+#   PINGD_DELAY_LONG - sleep time in the up/down mode ~300 sec
+#   PINGD_DELAY_SHORT - sleep time in the 'check' mode ~1 sec
+#   PINGD_VERBOSE - messages
+
 state="up"
 pingCount=0
 pingInt=0
@@ -34,7 +43,7 @@ while (true); do
 	(( pingExt > 0 )) && extUp=true || extUp=false
 
 
-	echo `date +%H:%M:%S` $(( pingCount+1 )) ${pingInt} ${pingExt} ${intUp} ${extUp}
+	(( ${PINGD_VERBOSE} )) && echo $(( pingCount+1 )) ${state} ${pingInt} ${pingExt} ${intUp} ${extUp}
 
     if (( ++pingCount < ${PINGD_ITERATIONS} ))
     then
@@ -68,6 +77,5 @@ while (true); do
     pingInt=0
     pingExt=0
 
-    echo '----------'${state}
 done
 
