@@ -1,0 +1,21 @@
+[Unit]
+Description=Pingy daemon
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/pingd
+ExecStart=/opt/pingd/pingd.sh
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=pingd
+User=root
+Environment=PINGD_INT=192.168.0.1
+Environment=PINGD_EXT=forest.p-dok.ru
+Environment=PINGD_ITERATIONS=5
+Environment=PINGD_DELAY_LONG=60
+Environment=PINGD_DELAY_SHORT=1
+Environment=PINGD_TIMEOUT=1
+
+[Install]
+WantedBy=multi-user.target
