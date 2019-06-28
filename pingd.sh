@@ -7,13 +7,14 @@
 #   PINGD_ITERATIONS - max loops in the 'check' state
 #   PINGD_DELAY_LONG - sleep time in the up/down mode ~300 sec
 #   PINGD_DELAY_SHORT - sleep time in the 'check' mode ~1 sec
-#   PINGD_VERBOSE - messages
+#   PINGD_VERBOSE - show messages
 
 state="up"
 pingCount=0
 pingInt=0
 pingExt=0
 
+(( ${PINGD_VERBOSE} )) && echo "pingd daemon started"
 
 while (true); do
 
@@ -65,7 +66,7 @@ while (true); do
             state='up'
         elif ( ${extUp} )
         then
-            echo 'Restart required'
+            echo 'Tunnel restart required'
             systemctl restart strongswan
             sleep 10
         else

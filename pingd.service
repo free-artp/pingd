@@ -16,6 +16,7 @@ Environment=PINGD_ITERATIONS=5
 Environment=PINGD_DELAY_LONG=60
 Environment=PINGD_DELAY_SHORT=1
 Environment=PINGD_TIMEOUT=1
+Environment=PINGD_VERBOSE=1
 
 [Install]
 WantedBy=multi-user.target
