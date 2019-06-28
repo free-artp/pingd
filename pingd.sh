@@ -66,7 +66,7 @@ while (true); do
             state='up'
         elif ( ${extUp} )
         then
-            echo 'Tunnel restart required'
+            (( ${PINGD_VERBOSE} )) && echo 'Tunnel restart required'
             systemctl restart strongswan
             sleep 10
         else
