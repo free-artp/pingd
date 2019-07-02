@@ -22,9 +22,9 @@ while (true); do
     [ 'x'${state} = 'xdown' ] && dn=true || dn=false
     [ 'x'${state} = 'xchk' ]  && chk=true || chk=false
 
-	if ( ${up} )
-	then sleep ${PINGD_DELAY_LONG}
-	else sleep ${PINGD_DELAY_SHORT}
+    if ( ${up} )
+    then sleep ${PINGD_DELAY_LONG}
+    else sleep ${PINGD_DELAY_SHORT}
 	fi
 
     if ( ${up} || ${chk} )
@@ -40,8 +40,8 @@ while (true); do
 
     fi
 
-	(( pingInt > 0 )) && intUp=true || intUp=false
-	(( pingExt > 0 )) && extUp=true || extUp=false
+    (( pingInt > 0 )) && intUp=true || intUp=false
+    (( pingExt > 0 )) && extUp=true || extUp=false
 
 
 	(( ${PINGD_VERBOSE} )) && echo $(( pingCount+1 )) ${state} ${pingInt} ${pingExt} ${intUp} ${extUp}
@@ -70,7 +70,7 @@ while (true); do
             systemctl restart strongswan
             sleep 10
         else
-            state='dn'
+            state='down'
         fi
     fi
 
